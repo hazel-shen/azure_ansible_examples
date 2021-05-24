@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- hosts: '{{ publicipaddress }}'
+  gather_facts: false
 
   vars:
     ansible_user: azureuser
@@ -7,6 +8,16 @@
     ansible_connection: winrm
     ansible_winrm_transport: ntlm
     ansible_winrm_server_cert_validation: ignore
+
+  pre_tasks:
+  - name: Get facts for one Public IP
+    azure_rm_publicipaddress_info:
+      resource_group: ansible-rg
+      name: webPublicIP
+    register: publicipaddresses
+
+  - name: set public ip address fact
+    set_fact: publicipaddress="{{ publicipaddresses | json_query('publicipaddresses[0].ip_address')}}"
 
   tasks:
   - name: Install IIS
