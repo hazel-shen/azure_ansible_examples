@@ -1,7 +1,7 @@
 ---
-- hosts: all
+- hosts: localhost
   gather_facts: False
-  
+
   vars:
     ansible_user: azureuser
     ansible_password: '@Azureuser'
