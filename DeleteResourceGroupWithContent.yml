@@ -1,10 +1,16 @@
 ---
-- hosts: all
-  gather_facts: False
+- hosts: localhost
+  connection: local
 
   tasks:
   - name: Delete a resource group including resources it contains
     azure_rm_resourcegroup:
       name: ansible-rg
+      force_delete_nonempty: yes
+      state: absent
+  
+  - name: Delete NetworkWatcher resource group including resources it contains
+    azure_rm_resourcegroup:
+      name: NetworkWatcherRG
       force_delete_nonempty: yes
       state: absent

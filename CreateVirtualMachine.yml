@@ -5,6 +5,7 @@
   # vars_prompt:
   #   - name: password
   #     prompt: "Enter local administrator password"
+  # // Replace by Ansible Tower's survey
 
   tasks:
     - name: Create resource group
