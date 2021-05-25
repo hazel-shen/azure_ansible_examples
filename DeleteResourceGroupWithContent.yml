@@ -1,6 +1,7 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: all
+  gather_facts: False
+  
   tasks:
   - name: Delete a resource group including resources it contains
     azure_rm_resourcegroup:
