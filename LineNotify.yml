@@ -2,18 +2,17 @@
 - hosts: localhost
   connection: local
   tasks:
-  - name: Notify with LINE
-    
+  - name: Notify with LINE  
     uri:
       url: https://notify-api.line.me/api/notify
       validate_certs: false
       method: POST
       headers: 
-        Authorization: Bearer "{{ LINE_NOTIFY_TOKEN }}"
+        Authorization: Bearer {{ LINE_NOTIFY_TOKEN }}
         Content-Type: application/x-www-form-urlencoded
       body_format: form-urlencoded
       body:
         message: "{{ MESSSAGE_CONTENT }}"
       status_code: [200, 400]
 
-  
+ 
