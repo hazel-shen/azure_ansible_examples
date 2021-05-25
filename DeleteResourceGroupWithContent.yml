@@ -1,10 +1,10 @@
 ---
 - hosts: all
   gather_facts: False
-  
+
   tasks:
   - name: Delete a resource group including resources it contains
     azure_rm_resourcegroup:
-      name: rg-cs-ansible
+      name: ansible-rg
       force_delete_nonempty: yes
       state: absent
